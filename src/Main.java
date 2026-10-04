@@ -14,6 +14,7 @@ public class Main {
     public static void runDemo() {
         Renderer vector = new VectorRenderer();
         Renderer raster = new RasterRenderer();
+        Renderer ascii = new AsciiRenderer();
 
         check("T1", "Circle + VectorRenderer",
                 new Circle(1, 2, vector).execute(), "VECTOR circle radius=2");
@@ -25,6 +26,11 @@ public class Main {
                 new Square(2, 3, raster).execute(), "RASTER square side=3");
 
         checkSwitch(vector, raster);
+
+        check("T6", "Circle + AsciiRenderer",
+                new Circle(1, 2, ascii).execute(), "ASCII circle radius=2");
+        check("T7", "Square + AsciiRenderer",
+                new Square(2, 3, ascii).execute(), "ASCII square side=3");
 
         System.out.println("SUMMARY: " + passed + "/" + total + " PASS");
     }
